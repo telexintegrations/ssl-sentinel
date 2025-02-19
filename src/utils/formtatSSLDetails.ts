@@ -1,11 +1,11 @@
 export const formatSSLDetails = (
-	site: string,
-	issuer: string,
-	validityStart: string,
-	validityEnd: string,
-	serialNumber: string,
+  site: string,
+  issuer: string,
+  validityStart: string,
+  validityEnd: string,
+  serialNumber: string,
 ) => {
-	return `SSL Certificate Information for ${site}:
+  return `SSL Certificate Information for ${site}:
  -----------------------------
  Issuer: ${issuer}
  Validity: ${validityStart} - ${validityEnd}

@@ -5,16 +5,18 @@ import { MonitorPayload } from "../types";
 const router = Router();
 
 router.post("/tick", (req, res) => {
-	const body: MonitorPayload = req.body;
+  const body: MonitorPayload = req.body;
 
-	if (!body) {
-		res.status(400).json({ error: "missing content" });
-		return;
-	}
+  if (!body) {
+    res.status(400).json({ error: "missing content" });
+    return;
+  }
 
-	res.json({ status: "accepted" });
+  setTimeout(async () => {
+    await monitorTask(body);
+  }, 0);
 
-	setTimeout(async () => {
-		await monitorTask(body);
-	}, 0);
+  res.json({ status: "accepted" });
 });
+
+export default router;
