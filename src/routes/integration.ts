@@ -14,7 +14,8 @@ router.get("/integration.json", (req, res) => {
       descriptions: {
         app_description:
           "SSL-Sentinel periodically check the SSL certificates of provided websites, and reports the SSL expiration date for the website",
-        app_logo: "",
+        app_logo:
+          "https://i.pinimg.com/736x/9a/6c/12/9a6c121be8cc5b037526f9922b956db1.jpg",
         app_name: "SSL-Sentinel",
         app_url: `${baseUrl}/tick`,
         background_color: "#50C878",
