@@ -16,7 +16,7 @@ router.post("/tick", (req, res) => {
     await monitorTask(body);
   }, 0);
 
-  res.json({ status: "accepted" });
+  res.status(202).json({ status: "SSL-Sentinel started" });
 });
 
 export default router;
