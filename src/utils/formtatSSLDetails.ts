@@ -8,7 +8,7 @@ export const formatSSLDetails = (
   return `SSL Certificate Information for ${site}:
  -----------------------------
  Issuer: ${issuer}
- Validity: ${validityStart} - ${validityEnd}
+ Validity: ${validityStart}  -  ${validityEnd}
  Serial Number: ${serialNumber}
  `;
 };
