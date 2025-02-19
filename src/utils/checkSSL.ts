@@ -32,7 +32,7 @@ export const checkSSL = (site: string): Promise<string> => {
         const now = new Date();
         if (validToDate < now) {
           resolve(
-            `Error: SSL certificate for "${site}" is expired (Expired on ${validToDate.toUTCString()})`
+            `Error: SSL certificate for "${site}" is expired (Expired on ${validToDate.toUTCString()})`,
           );
           return;
         }
@@ -42,11 +42,11 @@ export const checkSSL = (site: string): Promise<string> => {
           issuerMatch[1] || "Unknown",
           validFromMatch[1],
           validToMatch[1],
-          serialMatch[1]
+          serialMatch[1],
         );
 
         resolve(formattedResult);
-      }
+      },
     );
   });
 };
