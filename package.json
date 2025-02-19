@@ -7,17 +7,21 @@
     "start": "build/index.js",
     "dev": "ts-node-dev src/index.ts",
     "format": "pnpm biome format --write ./src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "glob glob 'src/**/*.test.ts' -c 'tsx --test'"
   },
   "author": "Prince Wilson",
   "license": "MIT",
   "description": "",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/supertest": "^6.0.2",
+    "glob": "^11.0.1",
+    "supertest": "^7.0.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.7.3",
-    "@types/cors": "^2.8.17"
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "cors": "^2.8.5",
