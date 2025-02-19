@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "start": "build/index.js",
+    "start": "node build/index.js",
     "dev": "ts-node-dev src/index.ts",
     "format": "pnpm biome format --write ./src",
     "test": "glob glob 'src/**/*.test.ts' -c 'tsx --test'"
@@ -14,6 +14,7 @@
   "description": "",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@flydotio/dockerfile": "^0.7.8",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/supertest": "^6.0.2",
@@ -25,6 +26,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2"
   }
 }
