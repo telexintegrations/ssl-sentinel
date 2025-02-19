@@ -17,7 +17,7 @@ router.get("/integration.json", (req, res) => {
         app_logo:
           "https://i.pinimg.com/736x/9a/6c/12/9a6c121be8cc5b037526f9922b956db1.jpg",
         app_name: "SSL-Sentinel",
-        app_url: `${baseUrl}/tick`,
+        app_url: `${baseUrl}`,
         background_color: "#50C878",
       },
       integration_category: "Monitoring & Logging",
