@@ -4,7 +4,7 @@ import integrationRouter from "./routes/integration";
 import tickRouter from "./routes/tick";
 import middleware from "./utils/middleware";
 
-const app = express();
+export const app = express();
 app.use(cors());
 app.use(express.json());
 
@@ -15,6 +15,6 @@ app.use(middleware.unknownEndpoint);
 
 const PORT = 3000 | 3001;
 
-app.listen(PORT, () => {
+export const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
