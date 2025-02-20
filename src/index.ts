@@ -6,7 +6,14 @@ import middleware from "./utils/middleware";
 import "dotenv/config";
 
 export const app = express();
-app.use(cors());
+
+const options = {
+  origin: [`http://localhost:${process.env.PORT || 3000}`, "https://telex.im"],
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(options));
 app.use(express.json());
 
 app.use("/", integrationRouter);

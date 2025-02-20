@@ -8,8 +8,8 @@ router.get("/integration.json", (req, res) => {
   const jsonSpec = {
     data: {
       date: {
-        created_at: "YYYY-MM-DD",
-        updated_at: "YYYY-MM-DD",
+        created_at: "2025-02-19",
+        updated_at: "2025-02-20",
       },
       descriptions: {
         app_description:
