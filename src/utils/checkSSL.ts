@@ -24,6 +24,8 @@ export const checkSSL = (site: string): Promise<string> => {
         const validToMatch = stdout.match(/notAfter=(.*)/);
         const serialMatch = stdout.match(/serial\s*=\s*([\dA-Fa-f]+)/);
 
+        console.log(issuerMatch, validFromMatch, serialMatch);
+
         // If no matches, return an error
         if (!issuerMatch || !validFromMatch || !validToMatch) {
           resolve(`Error: No valid SSL certificate found for "${site}"`);
