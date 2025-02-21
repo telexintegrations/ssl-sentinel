@@ -52,7 +52,6 @@ export const checkSSL = async (site: string): Promise<string> => {
         const result = formatSSLDetails(
           site,
           cert.issuer.O || "Unknown",
-          cert.valid_from,
           cert.valid_to,
           cert.serialNumber || "N/A"
         );
