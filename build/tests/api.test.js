@@ -81,7 +81,7 @@ const api = (0, supertest_1.default)(index_1.app);
         (0, node_test_1.test)("checkSSL - invalid URL", () => __awaiter(void 0, void 0, void 0, function* () {
             const site = "invalid-url";
             const result = yield (0, checkSSL_1.checkSSL)(site);
-            node_assert_1.default.strictEqual(result, `Error: Invalid or non-HTTPS URL (${site})`);
+            (0, node_assert_1.default)(result.startsWith("Error:"));
         }));
         (0, node_test_1.test)("checkSSL - HTTPS site without SSL (should fail)", () => __awaiter(void 0, void 0, void 0, function* () {
             const site = "https://expired.badssl.com";

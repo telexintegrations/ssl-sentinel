@@ -11,7 +11,7 @@ const tick_1 = __importDefault(require("./routes/tick"));
 const middleware_1 = __importDefault(require("./utils/middleware"));
 require("dotenv/config");
 exports.app = (0, express_1.default)();
-exports.app.use((0, cors_1.default)());
+exports.app.use((0, cors_1.default)({ origin: "*" }));
 exports.app.use(express_1.default.json());
 exports.app.use("/", integration_1.default);
 exports.app.use("/", tick_1.default);
