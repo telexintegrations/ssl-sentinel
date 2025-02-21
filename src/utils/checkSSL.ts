@@ -9,10 +9,16 @@ export const checkSSL = async (site: string): Promise<string> => {
       return `Error: Invalid or non-HTTPS URL (${site})`;
     }
 
+    // Normalize the URL by adding https:// if not present
+    let normalizedSite = site.trim();
+    if (!normalizedSite.startsWith("https://")) {
+      normalizedSite = `https://${normalizedSite}`;
+    }
+
     // Try to create URL object
     let url: URL;
     try {
-      url = new URL(site.trim());
+      url = new URL(normalizedSite);
       if (url.protocol !== "https:") {
         return `Error: Invalid or non-HTTPS URL (${site})`;
       }
@@ -31,7 +37,6 @@ export const checkSSL = async (site: string): Promise<string> => {
 
       socket.on("secureConnect", () => {
         const cert = socket.getPeerCertificate(true);
-
         if (!cert) {
           socket.destroy();
           resolve(`Error: No valid SSL certificate found for "${site}"`);
@@ -40,7 +45,6 @@ export const checkSSL = async (site: string): Promise<string> => {
 
         const now = new Date();
         const validTo = new Date(cert.valid_to);
-
         if (validTo < now) {
           socket.destroy();
           resolve(
@@ -55,7 +59,6 @@ export const checkSSL = async (site: string): Promise<string> => {
           cert.valid_to,
           cert.serialNumber || "N/A"
         );
-
         socket.destroy();
         resolve(result);
       });
