@@ -75,7 +75,7 @@ describe("telex SSL-Sentinel test", () => {
       assert.match(
         result,
         /Issuer:/,
-        "Should return valid SSL certificate details",
+        "Should return valid SSL certificate details"
       );
     });
     test("checkSSL - invalid URL", async () => {
