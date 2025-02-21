@@ -18,16 +18,19 @@ export const checkSSL = (site: string): Promise<string> => {
           return;
         }
 
-        const issuerMatch = stdout.match(/issuer=.*?O=(.*?)(,|\/)/);
+        // Extract SSL details
+        const issuerMatch = stdout.match(/issuer=.*?O=([^,\/\n]+)/);
         const validFromMatch = stdout.match(/notBefore=(.*)/);
         const validToMatch = stdout.match(/notAfter=(.*)/);
-        const serialMatch = stdout.match(/serial=(.*)/);
+        const serialMatch = stdout.match(/serial\s*=\s*([\dA-Fa-f]+)/);
 
-        if (!issuerMatch || !validFromMatch || !validToMatch || !serialMatch) {
+        // If no matches, return an error
+        if (!issuerMatch || !validFromMatch || !validToMatch) {
           resolve(`Error: No valid SSL certificate found for "${site}"`);
           return;
         }
 
+        // Check for expiration
         const validToDate = new Date(validToMatch[1]);
         const now = new Date();
         if (validToDate < now) {
@@ -37,12 +40,13 @@ export const checkSSL = (site: string): Promise<string> => {
           return;
         }
 
+        // Format the result
         const formattedResult = formatSSLDetails(
           site,
-          issuerMatch[1] || "Unknown",
-          validFromMatch[1],
-          validToMatch[1],
-          serialMatch[1]
+          issuerMatch[1]?.trim() || "Unknown",
+          validFromMatch[1]?.trim(),
+          validToMatch[1]?.trim(),
+          serialMatch ? serialMatch[1].trim() : "N/A"
         );
 
         resolve(formattedResult);
