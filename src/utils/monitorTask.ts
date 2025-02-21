@@ -1,9 +1,16 @@
 import { MonitorPayload } from "../types";
 import { checkSSL } from "./checkSSL";
-
 export const monitorTask = async (payload: MonitorPayload) => {
+  if (!payload.settings || !Array.isArray(payload.settings)) {
+    console.error(
+      "Error: payload.settings is missing or not an array",
+      payload
+    );
+    return;
+  }
+
   const sites = payload.settings
-    .filter((setting) => setting.label.startsWith("site"))
+    .filter((setting) => setting.label?.startsWith("site"))
     .map((setting) => setting.default);
 
   const results = await Promise.all(sites.map((site) => checkSSL(site)));

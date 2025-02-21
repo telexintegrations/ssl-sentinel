@@ -7,13 +7,7 @@ import "dotenv/config";
 
 export const app = express();
 
-const options = {
-  origin: [`http://localhost:${process.env.PORT || 3000}`, "https://telex.im"],
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-
-app.use(cors(options));
+app.use(cors());
 app.use(express.json());
 
 app.use("/", integrationRouter);
