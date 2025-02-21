@@ -35,7 +35,7 @@ router.get("/integration.json", (req, res) => {
                     default: "*/5 * * * *",
                 },
             ],
-            tick_url: `${baseUrl}/tick`,
+            tick_url: `https://ssl-sentinel.onrender.com/tick`,
             target_url: "",
         },
     };

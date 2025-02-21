@@ -5,7 +5,7 @@ const formtatSSLDetails_1 = require("./formtatSSLDetails");
 const validHttpsUrl_1 = require("./validHttpsUrl");
 const child_process_1 = require("child_process");
 const checkSSL = (site) => {
-    const url = (0, validHttpsUrl_1.validHttpsUrl)(site);
+    const url = (0, validHttpsUrl_1.validHttpsUrl)(site.trim());
     if (!url) {
         return Promise.resolve(`Error: Invalid or non-HTTPS URL (${site})`);
     }
