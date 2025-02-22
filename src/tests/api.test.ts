@@ -85,11 +85,13 @@ describe("telex SSL-Sentinel test", () => {
       assert(result.startsWith("Error:"));
     });
 
-    test("checkSSL - HTTPS site without SSL (should fail)", async () => {
+    test("checkSSL - HTTPS site with expired SSL (should fail)", async () => {
       const site = "https://expired.badssl.com";
       const result = await checkSSL(site);
 
-      assert(result.startsWith("Error:"));
+      console.log(result);
+
+      assert(result.includes("SSL Certificate is **EXPIRED**"));
     });
   });
 
