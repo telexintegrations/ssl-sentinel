@@ -83,10 +83,11 @@ const api = (0, supertest_1.default)(index_1.app);
             const result = yield (0, checkSSL_1.checkSSL)(site);
             (0, node_assert_1.default)(result.startsWith("Error:"));
         }));
-        (0, node_test_1.test)("checkSSL - HTTPS site without SSL (should fail)", () => __awaiter(void 0, void 0, void 0, function* () {
+        (0, node_test_1.test)("checkSSL - HTTPS site with expired SSL (should fail)", () => __awaiter(void 0, void 0, void 0, function* () {
             const site = "https://expired.badssl.com";
             const result = yield (0, checkSSL_1.checkSSL)(site);
-            (0, node_assert_1.default)(result.startsWith("Error:"));
+            console.log(result);
+            (0, node_assert_1.default)(result.includes("SSL Certificate is **EXPIRED**"));
         }));
     });
     (0, node_test_1.after)(() => {
