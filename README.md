@@ -106,16 +106,26 @@ pnpm run dev
 
 ### Configuration Steps
 
-1. **Go to the App Settings**
+1. **Go to Telex Telex Dashboard**
+
+- Add an organisation to your telex dashboard
+- Go to the organisation and select apps
+- In the apps view click on **Add New**
+- add the following url in the provided url - https://ssl-sentinel.onrender.com/integration.json
+- SSL-Sentinel will be added to app, toggle the checkbox to make the app active and click on manage App
+
+2. **Go to the App Settings**
+
    - Add up to two URLs that you want to monitor for periodic SSL certificate checks.
    - Specify the interval period using a cron scheduler format (`* * * * *`).
    - The default interval is every 5 minutes: `*/5 * * * *`.
 
-**Save Settings**
+3. **Save Settings**
 
 - Click **Save** to apply changes.
 - Optionally, set a specific channel for output under the **Output Settings** section.
 - If no specific channel is set, click **Save Settings** to apply to all channels.
+- Click on the channel you specified the the SSL-Sentinel and wait for updates on SSL-checks on the provided websites
 
 ---
 
