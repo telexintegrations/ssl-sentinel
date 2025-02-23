@@ -102,6 +102,23 @@ pnpm run dev
 
 ---
 
+## Testing SSL-Sentinel on Telex
+
+### Configuration Steps
+
+1. **Go to the App Settings**
+   - Add up to two URLs that you want to monitor for periodic SSL certificate checks.
+   - Specify the interval period using a cron scheduler format (`* * * * *`).
+   - The default interval is every 5 minutes: `*/5 * * * *`.
+
+**Save Settings**
+
+- Click **Save** to apply changes.
+- Optionally, set a specific channel for output under the **Output Settings** section.
+- If no specific channel is set, click **Save Settings** to apply to all channels.
+
+---
+
 ## Screenshots
 
 ### Adding urls through settings
